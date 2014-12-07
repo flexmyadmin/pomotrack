@@ -1,0 +1,9 @@
+<ul>
+{{#each item in tasks}}
+  <li>
+    {{#link-to 'clients.projects.tasks.view' item}}{{item.title}}{{/link-to}}
+    Start
+  </li>
+{{/each}}
+</ul>
+{{outlet}}
