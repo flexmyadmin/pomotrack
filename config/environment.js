@@ -2,6 +2,14 @@
 
 module.exports = function(environment) {
   var ENV = {
+    contentSecurityPolicyHeader: 'Content-Security-Policy-Report-Only',
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' https://*.firebaseio.com 'unsafe-eval'",
+      'connect-src': "'self'",
+      'img-src': "'self' 'unsafe-inline'",
+      'style-src': "'self' 'unsafe-inline'"
+    },
     modulePrefix: 'pomotrack',
     environment: environment,
     baseURL: '/',
