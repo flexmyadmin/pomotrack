@@ -1,7 +1,22 @@
-<ul>
-    <li>
-        {{#link-to 'clients'}}Clients{{/link-to}}
-    </li>
-</ul>
-
-{{outlet}}
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Pomotrack</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                {{#link-to 'clients' tagName='li' href=false}}<a href="">Clients</a>{{/link-to}}
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    {{outlet}}
+</div>
