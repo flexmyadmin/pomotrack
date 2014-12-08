@@ -1,3 +1,9 @@
 <h2>{{title}}</h2>
-{{render "clients/projects/tasks/log_entries" logEntries}}
+<div class="actions">
+  <button {{action "start"}} {{bind-attr class=":btn :btn-primary hasActiveEntry:disabled"}}>Start</button>
+  <button {{action "stop"}} {{bind-attr class=":btn hasActiveEntry::disabled"}}>Stop</button>
+</div>
+{{#each logEntry in logEntries}}
+  {{render "clients/projects/tasks/log_entry" logEntry}}
+{{/each}}
 {{outlet}}
