@@ -24,7 +24,7 @@ export default Ember.ObjectController.extend({
 
   stop: function() {
     var entry = this.get('activeEntry');
-    if (!entry) return;
+    if (!entry){ return; }
 
     entry.stop();
 
