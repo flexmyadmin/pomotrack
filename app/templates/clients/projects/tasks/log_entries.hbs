@@ -1,0 +1,12 @@
+<ul>
+{{#each logEntry in controller}}
+  <li>
+    <span class="date">
+      {{logEntry.added}}
+    </span>
+    <small class="duration">
+      {{logEntry.duration}}
+    </small>
+  </li>
+{{/each}}
+</ul>
