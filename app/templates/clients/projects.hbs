@@ -1,4 +1,6 @@
-{{#each projects}}
-  <li>{{title}}</li>
+<ul>
+{{#each item in projects}}
+  <li>{{#link-to 'clients.projects.tasks' item}}{{item.title}}{{/link-to}}</li>
 {{/each}}
+</ul>
 {{outlet}}
