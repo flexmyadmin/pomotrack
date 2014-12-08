@@ -28,7 +28,7 @@ export default Ember.ObjectController.extend({
     var entry = this.get('activeEntry');
     if (!entry) return;
 
-    entry.set('duration', new Date() - entry.get('added'));
+    entry.stop();
 
     this.set('hasActiveEntry', false);
     this.set('activeEntry', null);

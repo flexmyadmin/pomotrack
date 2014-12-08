@@ -9,7 +9,10 @@ var LogEntry = DS.Model.extend({
   duration: DS.attr('number', {
     defaultValue: 0
   }),
-  task: DS.belongsTo('task')
+  task: DS.belongsTo('task'),
+  stop: function() {
+    this.set('duration', new Date() - this.get('added'))
+  }
 });
 
 LogEntry.reopenClass({
