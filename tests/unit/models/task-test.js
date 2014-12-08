@@ -5,7 +5,7 @@ import {
 
 moduleForModel('task', 'Task', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:client', 'model:project', 'model:log-entry']
 });
 
 test('it exists', function() {
