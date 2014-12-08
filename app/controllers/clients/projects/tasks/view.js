@@ -14,12 +14,7 @@ export default Ember.ObjectController.extend({
   start: function() {
     this.stop();
 
-    var logEntry = this.store.createRecord('log-entry', {
-      task: this.get('model')
-    });
-    this.get('logEntries').pushObject(logEntry);
-
-    this.set('activeEntry', logEntry);
+    this.set('activeEntry', this.store.createLogEntry(this.get('model')));
   },
 
   stop: function() {
