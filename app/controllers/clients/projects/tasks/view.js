@@ -1,7 +1,6 @@
 import Ember from "ember";
 
 export default Ember.ObjectController.extend({
-  hasActiveEntry: false,
   activeEntry: null,
   actions: {
     start: function() {
@@ -20,7 +19,6 @@ export default Ember.ObjectController.extend({
     });
     this.get('logEntries').pushObject(logEntry);
 
-    this.set('hasActiveEntry', true);
     this.set('activeEntry', logEntry);
   },
 
@@ -30,7 +28,6 @@ export default Ember.ObjectController.extend({
 
     entry.stop();
 
-    this.set('hasActiveEntry', false);
     this.set('activeEntry', null);
   }
 
