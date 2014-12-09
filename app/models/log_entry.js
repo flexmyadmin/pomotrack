@@ -3,7 +3,7 @@ import DS from 'ember-data';
 var CONST = {
   STARTED: 'started',
   STOPPED: 'stopped'
-}
+};
 
 var LogEntry = DS.Model.extend({
   added: DS.attr('date', {
@@ -26,10 +26,10 @@ var LogEntry = DS.Model.extend({
     this.set('duration', new Date() - this.get('added'));
   },
   isStarted: function() {
-    return this.get('status') == CONST.STARTED;
+    return this.get('status') === CONST.STARTED;
   }.property('status'),
   isStopped: function() {
-    return this.get('status') == CONST.STOPPED;
+    return this.get('status') === CONST.STOPPED;
   }.property('status')
 });
 
