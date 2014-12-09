@@ -11,6 +11,10 @@ var LogEntry = DS.Model.extend({
   }),
   task: DS.belongsTo('task'),
   stop: function() {
+    if (this.duration) {
+      return;
+    }
+
     this.set('duration', new Date() - this.get('added'));
   }
 });
