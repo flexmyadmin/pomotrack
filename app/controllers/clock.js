@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
   },
 
   startEnabled: function() {
-    var selectedEntry = this.get('selected.logEntry'),
+    var selectedLogEntry = this.get('selected.logEntry'),
       selectedTask = this.get('selected.task');
 
     if (!selectedTask) {
@@ -27,13 +27,13 @@ export default Ember.Controller.extend({
       return false;
     }
 
-    if (!selectedEntry || selectedEntry.get('isStopped')) {
+    if (!selectedLogEntry || selectedLogEntry.get('isStopped')) {
       //always enabled if not currently logging anything
       return true;
     }
 
     //enable it when the user selects a different task than the current active entry's task
-    return selectedEntry.get('task') != selectedTask;
+    return selectedLogEntry.get('task') != selectedTask;
   }.property('selected.task', 'selected.logEntry'),
   stopEnabled: function() {
     var selectedTask = this.get('selected.task');
