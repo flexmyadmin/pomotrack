@@ -1,8 +1,4 @@
 <h2>{{title}}</h2>
-<div class="actions">
-  <button {{action "start"}} {{bind-attr class=":btn :btn-primary activeEntry:disabled"}}>Start</button>
-  <button {{action "stop"}} {{bind-attr class=":btn activeEntry::disabled"}}>Stop</button>
-</div>
 {{#each logEntry in logEntries}}
   {{render "clients/projects/tasks/log_entry" logEntry}}
 {{/each}}
