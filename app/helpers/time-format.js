@@ -17,11 +17,12 @@ function formatInteger(value, leadingZeros) {
   return str;
 }
 
-function format(value, hasMiliseconds) {
+function format(value, hasMiliseconds, displayMiliseconds) {
   var seconds = 0,
     minutes,
     hours,
     miliSeconds;
+  displayMiliseconds = displayMiliseconds || false;
   value = parseInt(value, 10);
   if (isNaN(value)) {
     value = 0;
@@ -40,11 +41,11 @@ function format(value, hasMiliseconds) {
   return formatInteger(hours, 2) + ':' +
   formatInteger(minutes, 2) + ':' +
   formatInteger(seconds, 2) +
-  (miliSeconds === false ? "" : "." + formatInteger(miliSeconds, 3));
+  (displayMiliseconds === false ? "" : "." + formatInteger(miliSeconds, 3));
 }
 
 export function timeFormat(input) {
-  return format(input);
+  return format(input, true, true);
 }
 
 export default Ember.Handlebars.makeBoundHelper(timeFormat);
