@@ -19,12 +19,18 @@ var LogEntry = DS.Model.extend({
   }),
   task: DS.belongsTo('task'),
   stop: function() {
-    if (this.duration) {
+    if (this.get('isStopped')) {
       return;
     }
 
     this.set('duration', new Date() - this.get('added'));
-  }
+  },
+  isStarted: function() {
+    return this.get('status') == CONST.STARTED;
+  }.property('status'),
+  isStopped: function() {
+    return this.get('status') == CONST.STOPPED;
+  }.property('status')
 });
 
 LogEntry.reopenClass({
