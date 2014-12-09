@@ -33,7 +33,7 @@ export default Ember.Controller.extend({
     }
 
     //enable it when the user selects a different task than the current active entry's task
-    return selectedLogEntry.get('task') != selectedTask;
+    return selectedLogEntry.get('task') !== selectedTask;
   }.property('selected.task', 'selected.logEntry'),
   stopEnabled: function() {
     var selectedTask = this.get('selected.task');
