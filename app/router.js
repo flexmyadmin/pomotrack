@@ -7,8 +7,17 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.resource('clients', function () {
-    this.route('projects', {
+    this.resource('clients.projects', {
       path: ':client_id'
+    }, function () {
+      this.resource('clients.projects.tasks', {
+        path: 'projects/:project_id/tasks'
+      }, function () {
+        this.route('view', {
+          path: ':task_id'
+        });
+        this.route('new');
+      });
     });
   });
 });
