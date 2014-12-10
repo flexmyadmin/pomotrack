@@ -12,32 +12,55 @@ module('Integration - Landing Page', {
   }
 });
 
-var selectFirstTask = function(){
-  find('.clients li a:eq(0)').click();
-  find('.projects li a:eq(0)').click();
-  find('.tasks li a:eq(0)').click();
+var visitFirstTask = function(){
+  return visit('/').then(function() {
+    return click('.clients li a:first');
+  }).then(function(){
+    return click('.projects li a:first');
+  }).then(function(){
+    return click('.tasks li a:first');
+  });
+};
+
+var clickStart = function() {
+  return click('.clock .start');
+};
+var clickStop = function() {
+  return click('.clock .stop');
 };
 
 test('The clock should be disabled', function() {
-  visit('/').then(function() {
-    equal(find('.clock button').hasClass('disabled'), true);
-  });
+  visit('/')
+    .then(function() {
+      equal(find('.clock button').hasClass('disabled'), true);
+    });
 });
 test('The clock should be enabled after selecting first task', function() {
-  find('.clients li a:first').click();
-  find('.projects li a:first').click();
-  find('.tasks li a:first').click();
-  equal(find('.clock button').hasClass('disabled'), false);
+  visitFirstTask()
+    .then(function(){
+      equal(find('.clock .start').hasClass('disabled'), false);
+    });
 });
 test('Start should be disabled after it was clicked', function() {
-  find('.clock .start').click();
-  equal(find('.clock .start').hasClass('disabled'), true);
+  visitFirstTask()
+    .then(clickStart)
+    .then(function(){
+      equal(find('.clock .start').hasClass('disabled'), true);
+    });
 });
 test('Stop should be enabled after log entry was started', function() {
-  equal(find('.clock .stop').hasClass('disabled'), false);
+  visitFirstTask()
+    .then(clickStart)
+    .then(function(){
+      equal(find('.clock .stop').hasClass('disabled'), false);
+    });
 });
 test('Stop should be disabled after log entry was stopped', function() {
-  find('.clock .stop').click();
-  equal(find('.clock .stop').hasClass('disabled'), true);
+  visitFirstTask()
+    .then(clickStart)
+    .then(clickStop)
+    .then(function(){
+      equal(find('.clock .stop').hasClass('disabled'), true);
+    });
 });
 
