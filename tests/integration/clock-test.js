@@ -1,9 +1,10 @@
-import startApp from '../../tests/helpers/start-app';
+import startApp from '../../tests/pageActions/start-app';
 import Ember from 'ember';
+import pageActions from '../../tests/integration/pageActions/page-actions';
 
 var App;
 
-module('Integration - Landing Page', {
+module('Integration - Clock', {
   setup: function() {
     App = startApp();
   },
@@ -12,23 +13,6 @@ module('Integration - Landing Page', {
   }
 });
 
-var visitFirstTask = function(){
-  return visit('/').then(function() {
-    return click('.clients li a:first');
-  }).then(function(){
-    return click('.projects li a:first');
-  }).then(function(){
-    return click('.tasks li a:first');
-  });
-};
-
-var clickStart = function() {
-  return click('.clock .start');
-};
-var clickStop = function() {
-  return click('.clock .stop');
-};
-
 test('The clock should be disabled', function() {
   visit('/')
     .then(function() {
@@ -36,31 +20,31 @@ test('The clock should be disabled', function() {
     });
 });
 test('The clock should be enabled after selecting first task', function() {
-  visitFirstTask()
+  pageActions.visitFirstTask()
     .then(function(){
-      equal(find('.clock .start').hasClass('disabled'), false);
+      equal(pageActions.findStart().hasClass('disabled'), false);
     });
 });
 test('Start should be disabled after it was clicked', function() {
-  visitFirstTask()
-    .then(clickStart)
+  pageActions.visitFirstTask()
+    .then(pageActions.clickStart)
     .then(function(){
-      equal(find('.clock .start').hasClass('disabled'), true);
+      equal(pageActions.findStart().hasClass('disabled'), true);
     });
 });
 test('Stop should be enabled after log entry was started', function() {
-  visitFirstTask()
-    .then(clickStart)
+  pageActions.visitFirstTask()
+    .then(pageActions.clickStart)
     .then(function(){
-      equal(find('.clock .stop').hasClass('disabled'), false);
+      equal(pageActions.findStop().hasClass('disabled'), false);
     });
 });
 test('Stop should be disabled after log entry was stopped', function() {
-  visitFirstTask()
-    .then(clickStart)
-    .then(clickStop)
+  pageActions.visitFirstTask()
+    .then(pageActions.clickStart)
+    .then(pageActions.clickStop)
     .then(function(){
-      equal(find('.clock .stop').hasClass('disabled'), true);
+      equal(pageActions.findStop().hasClass('disabled'), true);
     });
 });
 

@@ -1,0 +1,14 @@
+var SELECTORS = {
+  CLIENTS: '.clients',
+  PROJECTS: '.projects',
+  TASKS: '.tasks',
+  CLOCK: '.clock'
+};
+
+SELECTORS.FIRST_CLIENT = SELECTORS.CLIENTS + ' li a:first';
+SELECTORS.FIRST_PROJECT = SELECTORS.PROJECTS + ' li a:first';
+SELECTORS.FIRST_TASK = SELECTORS.TASKS + ' li a:first';
+SELECTORS.CLOCK_START_BUTTON = SELECTORS.CLOCK + ' button.start';
+SELECTORS.CLOCK_STOP_BUTTON = SELECTORS.CLOCK + ' button.stop';
+
+export default SELECTORS;
