@@ -1,6 +1,6 @@
-import startApp from '../../tests/pageActions/start-app';
+import startApp from '../../tests/helpers/start-app';
 import Ember from 'ember';
-import pageActions from '../../tests/integration/pageActions/page-actions';
+import pageActions from '../../tests/integration/helpers/page-actions';
 
 var App;
 
