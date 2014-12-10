@@ -10,23 +10,19 @@ function getTwoDigitsNumber(number) {
   return number;
 }
 
-function format(value, hasMiliseconds, displayMiliseconds) {
-  var seconds = 0,
-    minutes,
-    hours,
-    miliSeconds;
-  displayMiliseconds = displayMiliseconds || false;
+function format(value) {
+  var seconds, minutes, hours,
+    sign = '', roundFunction = Math.floor;
   value = parseInt(value, 10);
   if (isNaN(value)) {
     value = 0;
   }
-  if (hasMiliseconds) {
-    seconds = value / 1000;
-    miliSeconds = value % 1000;
-  } else {
-    seconds = value;
-    miliSeconds = false;
+  if(value < 0) {
+    roundFunction = Math.ceil;
+    sign = '-';
+    value = -value;
   }
+  seconds = roundFunction(value / 1000);
   hours = Math.floor(seconds / SECONDS_PER_HOUR);
   seconds = seconds - SECONDS_PER_HOUR * hours;
   minutes = Math.floor(seconds / SECONDS_PER_MINUTE);

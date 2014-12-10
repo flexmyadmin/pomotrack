@@ -16,3 +16,8 @@ test('it transforms correctly most values', function () {
   equal(timeFormat(getMilliseconds(1, 9, 8)), '01:09:08');
   equal(timeFormat(getMilliseconds(121, 11, 18)), '121:11:18');
 });
+
+test('it transforms correctly negative values', function () {
+  equal(timeFormat(-1), '-00:00:01');
+  equal(timeFormat(getMilliseconds(0, -1, -3)), '-00:01:03');
+});
