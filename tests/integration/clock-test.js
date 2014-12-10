@@ -16,7 +16,7 @@ module('Integration - Clock', {
 test('The clock should be disabled', function() {
   visit('/')
     .then(function() {
-      equal(find('.clock button').hasClass('disabled'), true);
+      equal(pageActions.findStart().hasClass('disabled'), true);
     });
 });
 test('The clock should be enabled after selecting first task', function() {
