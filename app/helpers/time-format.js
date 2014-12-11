@@ -3,45 +3,33 @@ import Ember from 'ember';
 var SECONDS_PER_HOUR = 3600,
   SECONDS_PER_MINUTE = 60;
 
-function formatInteger(value, leadingZeros) {
-  var str;
-  value = parseInt(value, 10);
-  str = value;
-  if (leadingZeros > 0) {
-    if (value < Math.pow(10, leadingZeros)) {
-      value = '' + value;
-      str = new Array(leadingZeros + 1 - value.length);
-      str = str.join('0') + value;
-    }
+function getTwoDigitsNumber(number) {
+  if (number < 10) {
+    return '0' + number;
   }
-  return str;
+  return number;
 }
 
-function format(value, hasMiliseconds, displayMiliseconds) {
-  var seconds = 0,
-    minutes,
-    hours,
-    miliSeconds;
-  displayMiliseconds = displayMiliseconds || false;
+function format(value) {
+  var seconds, minutes, hours,
+    sign = '', roundFunction = Math.floor;
   value = parseInt(value, 10);
   if (isNaN(value)) {
     value = 0;
   }
-  if (hasMiliseconds) {
-    seconds = value / 1000;
-    miliSeconds = value % 1000;
-  } else {
-    seconds = value;
-    miliSeconds = false;
+  if(value < 0) {
+    roundFunction = Math.ceil;
+    sign = '-';
+    value = -value;
   }
+  seconds = roundFunction(value / 1000);
   hours = Math.floor(seconds / SECONDS_PER_HOUR);
   seconds = seconds - SECONDS_PER_HOUR * hours;
   minutes = Math.floor(seconds / SECONDS_PER_MINUTE);
   seconds = seconds - minutes * SECONDS_PER_MINUTE;
-  return formatInteger(hours, 2) + ':' +
-  formatInteger(minutes, 2) + ':' +
-  formatInteger(seconds, 2) +
-  (displayMiliseconds === false ? "" : "." + formatInteger(miliSeconds, 3));
+  return sign + getTwoDigitsNumber(hours) + ':' +
+  getTwoDigitsNumber(minutes) + ':' +
+  getTwoDigitsNumber(seconds);
 }
 
 export function timeFormat(input) {
