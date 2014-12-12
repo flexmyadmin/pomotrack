@@ -6,7 +6,7 @@ var CONST = {
 };
 
 var LogEntry = DS.Model.extend({
-  added: DS.attr('date', {
+  addedAt: DS.attr('date', {
     defaultValue: function () {
       return new Date();
     }
@@ -23,7 +23,7 @@ var LogEntry = DS.Model.extend({
       return;
     }
 
-    this.set('duration', new Date() - this.get('added'));
+    this.set('duration', new Date() - this.get('addedAt'));
   },
   isStarted: function() {
     return this.get('status') === CONST.STATUS_STARTED;
@@ -36,52 +36,52 @@ var LogEntry = DS.Model.extend({
 LogEntry.reopenClass({
   FIXTURES: [{
     id: 1,
-    added: new Date(2014, 11, 8, 10, 20),
+    addedAt: new Date(2014, 11, 8, 10, 20),
     status: CONST.STATUS_STOPPED,
     task: 1
   }, {
     id: 2,
-    added: new Date(),
+    addedAt: new Date(),
     status: CONST.STATUS_STOPPED,
     task: 1
   }, {
     id: 3,
-    added: new Date(),
+    addedAt: new Date(),
     status: CONST.STATUS_STOPPED,
     task: 1
   }, {
     id: 4,
-    added: new Date(),
+    addedAt: new Date(),
     status: CONST.STATUS_STOPPED,
     task: 2
   }, {
     id: 5,
-    added: new Date(),
+    addedAt: new Date(),
     status: CONST.STATUS_STOPPED,
     task: 3
   }, {
     id: 6,
-    added: new Date(),
+    addedAt: new Date(),
     status: CONST.STATUS_STOPPED,
     task: 4
   }, {
     id: 7,
-    added: new Date(),
+    addedAt: new Date(),
     status: CONST.STATUS_STOPPED,
     task: 5
   }, {
     id: 8,
-    added: new Date(),
+    addedAt: new Date(),
     status: CONST.STATUS_STOPPED,
     task: 6
   }, {
     id: 9,
-    added: new Date(),
+    addedAt: new Date(),
     status: CONST.STATUS_STOPPED,
     task: 7
   }, {
     id: 10,
-    added: new Date(),
+    addedAt: new Date(),
     status: CONST.STATUS_STOPPED,
     task: 8
   }]
