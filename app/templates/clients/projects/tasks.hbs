@@ -1,5 +1,5 @@
 <ul class="tasks">
-{{#each item in tasks}}
+{{#each item in model.tasks}}
   <li>
     {{#link-to 'clients.projects.tasks.view' item}}{{item.title}}{{/link-to}}
     Start
