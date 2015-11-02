@@ -1,5 +1,5 @@
 <ul class="clients">
-{{#each item in model}}
+{{#each model as |item|}}
   <li>{{#link-to 'clients.projects' item}}{{item.name}}{{/link-to}}</li>
 {{/each}}
 </ul>
