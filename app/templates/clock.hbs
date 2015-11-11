@@ -1,4 +1,4 @@
 <div class="actions">
-  <button {{action "start"}} class="start btn btn-primary {{if isStartButtonEnabled 'disabled'}}">Start</button>
-  <button {{action "stop"}} class="stop btn {{if isStopButtonEnabled 'disabled' ''}}">Stop</button>
+  <button {{action "start"}} class="start btn btn-primary {{unless isStartButtonEnabled 'disabled'}}">Start</button>
+  <button {{action "stop"}} class="stop btn {{unless isStopButtonEnabled 'disabled' ''}}">Stop</button>
 </div>

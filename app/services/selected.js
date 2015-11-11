@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-  //needs: ['store:main'],
+  store: Ember.inject.service(),
   task: null,
   logEntry: null,
   setTask: function(task) {
@@ -21,7 +21,7 @@ export default Ember.Service.extend({
       throw new Error('No task selected to start log entry on');
     }
 
-    this.setLogEntry(this.store.createLogEntry(task));
+    this.setLogEntry(this.get('store').createLogEntry(task));
   },
   stopLogEntry: function() {
     var logEntry = this.get('logEntry');

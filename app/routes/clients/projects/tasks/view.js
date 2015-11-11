@@ -1,10 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  model: function (params) {
+    return this.get('store').findRecord('task', params.task_id);
+  },
   afterModel: function(task) {
-    this.selected.setTask(task);
+    this.get('selected').setTask(task);
   },
   deactivate: function() {
-    this.selected.setTask(null);
+    this.get('selected').setTask(null);
   }
 });

@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import DS from 'ember-data';
 
-export default Ember.Service.extend({
+export default DS.Store.extend({
     createLogEntry: function(task) {
         var logEntry = this.createRecord('log-entry', {
             task: task
