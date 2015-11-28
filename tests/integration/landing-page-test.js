@@ -1,5 +1,6 @@
 import startApp from '../../tests/helpers/start-app';
 import Ember from 'ember';
+import { test, module } from 'qunit';
 
 var App;
 
@@ -12,9 +13,9 @@ module('Integration - Landing Page', {
   }
 });
 
-test('Should show the client menu option', function() {
+test('Should show the client menu option', function(assert) {
   visit('/').then(function() {
-    equal(find('ul li.active').text().indexOf('Clients'), 0);
+    assert.equal(find('ul li.active').text().indexOf('Clients'), 0);
   });
 });
 

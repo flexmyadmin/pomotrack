@@ -36,4 +36,4 @@ export function timeFormat(input) {
   return format(input, true, true);
 }
 
-export default Ember.Handlebars.makeBoundHelper(timeFormat);
+export default Ember.Helper.helper(timeFormat);

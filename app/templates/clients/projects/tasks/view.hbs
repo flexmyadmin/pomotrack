@@ -1,5 +1,5 @@
 <h2>{{model.title}}</h2>
-{{#each logEntry in model.logEntries}}
-  {{render "clients/projects/tasks/log_entry" logEntry}}
+{{#each model.logEntries as |logEntry|}}
+  {{render "clients.projects.tasks.log_entry" logEntry}}
 {{/each}}
 {{outlet}}
