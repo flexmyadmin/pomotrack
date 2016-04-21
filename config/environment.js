@@ -2,14 +2,6 @@
 
 module.exports = function(environment) {
   var ENV = {
-    contentSecurityPolicyHeader: 'Content-Security-Policy-Report-Only',
-    contentSecurityPolicy: {
-      'default-src': "'none'",
-      'script-src': "'self' https://*.firebaseio.com 'unsafe-eval'",
-      'connect-src': "'self'",
-      'img-src': "'self' 'unsafe-inline'",
-      'style-src': "'self' 'unsafe-inline'"
-    },
     modulePrefix: 'pomotrack',
     environment: environment,
     baseURL: '/',
@@ -29,10 +21,10 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
-    ENV.APP.LOG_ACTIVE_GENERATION = true;
+    // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    ENV.APP.LOG_VIEW_LOOKUPS = true;
+    // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
   if (environment === 'test') {

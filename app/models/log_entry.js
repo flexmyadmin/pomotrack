@@ -22,8 +22,8 @@ var LogEntry = DS.Model.extend({
     if (this.get('isStopped')) {
       return;
     }
-
     this.set('duration', new Date() - this.get('addedAt'));
+    this.set('status', CONST.STATUS_STOPPED);
   },
   isStarted: function() {
     return this.get('status') === CONST.STATUS_STARTED;

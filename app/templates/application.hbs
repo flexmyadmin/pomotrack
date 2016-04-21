@@ -18,8 +18,56 @@
     </div>
 </nav>
 <div class="container">
-    {{outlet}}
-    <div class="clock">
-      {{outlet "clock"}}
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="com-xs-12">
+                    <form action="">
+                        <input type="text" name="filter">
+                    </form>
+                </div>
+                <div class="com-xs-12">
+                    <ul class="nav nav-pills">
+                        <li role="presentation" class="active"><a href="#">Tree</a></li>
+                        <li role="presentation"><a href="#">List</a></li>
+                    </ul>
+                </div>
+                <div class="com-xs-12">
+                    {{outlet}}
+                </div>
+                <div class="com-xs-12">
+                   <form action="">
+                       <label for="sort_by_name">Sort by name
+                           <input type="checkbox" id="sort_by_name" name="sort_by_name">
+                       </label>
+                   </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Timer <span class="label label-default">00:00:00</span></h3>
+                </div>
+                <div class="col-xs-12">
+                    <h3>Running</h3>
+                    <p>Current running task</p>
+                    <div>00:00:00</div>
+
+                    <div class="clock">
+                      {{outlet "clock"}}
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <ul>
+                        <li>00:10:23 item 1</li>
+                        <li>00:10:23 item 2</li>
+                        <li>00:10:23 item 3</li>
+                        <li>00:10:23 item 4</li>
+                        <li>00:10:23 item 5</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

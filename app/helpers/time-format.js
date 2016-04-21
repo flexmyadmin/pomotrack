@@ -11,6 +11,7 @@ function getTwoDigitsNumber(number) {
 }
 
 function format(value) {
+  console.log(value);
   var seconds, minutes, hours,
     sign = '', roundFunction = Math.floor;
   value = parseInt(value, 10);
@@ -33,7 +34,7 @@ function format(value) {
 }
 
 export function timeFormat(input) {
-  return format(input, true, true);
+  return format(input);
 }
 
 export default Ember.Helper.helper(timeFormat);
