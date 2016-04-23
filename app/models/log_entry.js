@@ -1,10 +1,7 @@
 import DS from 'ember-data';
 import Ember from 'ember';
+import CONST from '../constants/log_entry'
 
-var CONST = {
-  STATUS_STARTED: 'started',
-  STATUS_STOPPED: 'stopped'
-};
 
 var LogEntry = DS.Model.extend({
   addedAt: DS.attr('date', {
