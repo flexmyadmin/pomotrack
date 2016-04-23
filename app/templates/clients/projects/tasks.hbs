@@ -1,8 +1,12 @@
 <ul class="tasks">
 {{#each model.tasks as |item|}}
   <li>
-    {{#link-to 'clients.projects.tasks.view' item}}{{item.title}}{{/link-to}}
+    {{#link-to 'clients.projects.tasks.view' item}}{{item.title}} {{item.duration}}{{/link-to}}
   </li>
 {{/each}}
+  <li>
+  {{input placeholder="Task name" value=newTaskName}}
+  <button {{action "addTask" newTaskName model}} class="add btn btn-primary">Add</button>
+  </li>
 </ul>
 {{outlet}}

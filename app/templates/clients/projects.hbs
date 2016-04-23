@@ -2,5 +2,9 @@
 {{#each model.projects as |item|}}
   <li>{{#link-to 'clients.projects.tasks' item}}{{item.title}}{{/link-to}}</li>
 {{/each}}
+  <li>
+  {{input placeholder="Project name" value=newProjectName}}
+  <button {{action "addProject" newProjectName model}} class="add btn btn-primary">Add</button>
+  </li>
 </ul>
 {{outlet}}
