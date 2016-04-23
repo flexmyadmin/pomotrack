@@ -1,7 +1,9 @@
 <ul class="tasks">
 {{#each model.tasks as |item|}}
   <li>
-    {{#link-to 'clients.projects.tasks.view' item}}{{item.title}} {{item.duration}}{{/link-to}}
+    {{#link-to 'clients.projects.tasks.view' item}}{{item.title}}
+      {{time-format item.duration}}
+    {{/link-to}}
   </li>
 {{/each}}
   <li>

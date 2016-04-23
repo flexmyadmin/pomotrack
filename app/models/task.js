@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 var Task = DS.Model.extend({
   title: DS.attr('string'),
   submitted: DS.attr('boolean', {
@@ -7,6 +8,9 @@ var Task = DS.Model.extend({
   project: DS.belongsTo('project'),
   logEntries: DS.hasMany('log-entry', {
     async: true
+  }),
+  duration: Ember.computed('logEntries.@each.duration', function () {
+    return this.get('logEntries').reduce((sum, entry) => sum + entry.get('duration'), 0);
   })
 });
 Task.reopenClass({
