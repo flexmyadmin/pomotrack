@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 var CONST = {
   STATUS_STARTED: 'started',
@@ -18,17 +19,17 @@ var LogEntry = DS.Model.extend({
     defaultValue: CONST.STATUS_STARTED
   }),
   task: DS.belongsTo('task'),
-  stop: function() {
+  stop: function () {
     if (this.get('isStopped')) {
       return;
     }
     this.set('duration', new Date() - this.get('addedAt'));
     this.set('status', CONST.STATUS_STOPPED);
   },
-  isStarted: function() {
+  isStarted: function () {
     return this.get('status') === CONST.STATUS_STARTED;
   }.property('status'),
-  isStopped: function() {
+  isStopped: function () {
     return this.get('status') === CONST.STATUS_STOPPED;
   }.property('status')
 });
