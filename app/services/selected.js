@@ -4,35 +4,38 @@ export default Ember.Service.extend({
   store: Ember.inject.service('store'),
   task: null,
   logEntry: null,
-  createLogEntry: function(task) {
+  createLogEntry: function (task) {
     var logEntry = this.get('store').createRecord('log-entry', {
       task: task,
       addedAt: new Date()
     });
-    task.get('logEntries').pushObject(logEntry);
-
+    logEntry.save()
+      .then(() => task.get('logEntries'))
+      .then((logEntries) => {
+        logEntries.pushObject(logEntry);
+        task.save();
+      })
+      .then(() => this.setLogEntry(logEntry));
     return logEntry;
   },
-  setTask: function(task) {
+  setTask: function (task) {
     this.set('task', task);
   },
-  setLogEntry: function(logEntry) {
+  setLogEntry: function (logEntry) {
     var activeLogEntry = this.get('logEntry');
     if (activeLogEntry) {
       activeLogEntry.stop();
     }
-
     this.set('logEntry', logEntry);
   },
-  startLogEntry: function() {
+  startLogEntry: function () {
     var task = this.get('task');
     if (!task) {
       throw new Error('No task selected to start log entry on');
     }
-
-    this.setLogEntry(this.createLogEntry(task));
+    this.createLogEntry(task);
   },
-  stopLogEntry: function() {
+  stopLogEntry: function () {
     var logEntry = this.get('logEntry');
     if (!logEntry) {
       throw new Error('No logEntry to stop');
