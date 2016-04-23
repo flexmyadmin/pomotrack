@@ -4,7 +4,8 @@ export default Ember.Controller.extend({
     addClient(name) {
       this.store.createRecord('client', {
         name: name
-      }).save().then( () => this.set('newClientName', ''));
+      }).save()
+        .then(() => this.set('newClientName', ''));
     }
   }
 });

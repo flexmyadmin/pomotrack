@@ -10,11 +10,7 @@ export default Ember.Service.extend({
       addedAt: new Date()
     });
     logEntry.save()
-      .then(() => task.get('logEntries'))
-      .then((logEntries) => {
-        logEntries.pushObject(logEntry);
-        task.save();
-      })
+      .then(() => task.save())
       .then(() => this.setLogEntry(logEntry));
     return logEntry;
   },
