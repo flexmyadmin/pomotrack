@@ -1,1 +1,6 @@
-export { default } from 'ember-data-fixture-adapter';
+import LSAdapter from 'ember-localstorage-adapter';
+import Ember from 'ember'
+
+export default LSAdapter.extend({
+  namespace: 'flexmyadmin.pomotrack'
+});
