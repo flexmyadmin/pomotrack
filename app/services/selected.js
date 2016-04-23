@@ -38,6 +38,6 @@ export default Ember.Service.extend({
     }
 
     logEntry.stop();
-    this.setLogEntry(null);
+    logEntry.save().then(() => this.setLogEntry(null));
   }
 });
