@@ -3,41 +3,21 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   actions: {
     start: function() {
-      this.start();
+      this.get('selected').startLogEntry();
     },
     stop: function() {
-      this.stop();
+      this.get('selected').stopLogEntry();
     }
-  },
-
-  start: function() {
-    this.get('selected').startLogEntry();
-  },
-
-  stop: function() {
-    this.get('selected').stopLogEntry();
   },
 
   isStartButtonEnabled: function() {
-    var selectedLogEntry = this.get('selected.logEntry'),
-      selectedTask = this.get('selected.task');
-
-    if (!selectedTask) {
-      //disable it if there's no selected task
-      return false;
-    }
-
-    if (!selectedLogEntry || selectedLogEntry.get('isStopped')) {
-      //always enabled if not currently logging anything
-      return true;
-    }
-
-    //enable it when the user selects a different task than the current active entry's task
-    return selectedLogEntry.get('task') !== selectedTask;
+    const selectedTask = this.get('selected.task');
+    const selectedLogEntry = this.get('selected.logEntry');
+    const selectedLogEntryStarted = selectedLogEntry && selectedLogEntry.isStarted;
+    return selectedTask && !selectedLogEntryStarted;
   }.property('selected.task', 'selected.logEntry'),
   isStopButtonEnabled: function() {
-    var selectedTask = this.get('selected.task');
-
+    const selectedTask = this.get('selected.task');
     return selectedTask && !this.get('isStartButtonEnabled');
   }.property('selected.task', 'isStartButtonEnabled')
 });
