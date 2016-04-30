@@ -1,0 +1,5 @@
+{{yield}}
+  <form class="form-inline">
+  {{input placeholder=placeholder class="form-control" value=newValue}}
+  <button {{action "add" newValue model}} class="add btn btn-primary">Add</button>
+  </form>
