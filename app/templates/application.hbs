@@ -47,12 +47,12 @@
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-xs-12">
-                    <h3>Timer <span class="label label-default">00:00:00</span></h3>
+                    <h3><span class="label label-default">00:00:00</span></h3>
                 </div>
                 <div class="col-xs-12">
-                    <h3>Running</h3>
-                    <p>Current running task</p>
-                    <div>00:00:00</div>
+                    <div class="selected">
+                      {{outlet "selected"}}
+                    </div>
 
                     <div class="clock">
                       {{outlet "clock"}}
