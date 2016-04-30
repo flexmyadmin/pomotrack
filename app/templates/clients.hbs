@@ -3,8 +3,7 @@
   <li>{{#link-to 'clients.projects' item}}{{item.name}}{{/link-to}}</li>
 {{/each}}
   <li>
-  {{input placeholder="Client name" value=newClientName}}
-  <button {{action "addClient" newClientName}} class="add btn btn-primary">Add</button>
+  {{item-adder placeholder="Client name" model=model onAdd=(action "addClient")}}
   </li>
 </ul>
 {{outlet}}

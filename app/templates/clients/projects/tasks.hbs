@@ -7,8 +7,7 @@
   </li>
 {{/each}}
   <li>
-  {{input placeholder="Task name" value=newTaskName}}
-  <button {{action "addTask" newTaskName model}} class="add btn btn-primary">Add</button>
+  {{item-adder placeholder="Task name" model=model onAdd=(action "addTask")}}
   </li>
 </ul>
 {{outlet}}

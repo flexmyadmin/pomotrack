@@ -3,7 +3,7 @@
   <li>{{#link-to 'clients.projects.tasks' item}}{{item.title}}{{/link-to}}</li>
 {{/each}}
   <li>
-{{item-adder placeholder="Project name" model=model onAdd=(action "addProject")}}
+  {{item-adder placeholder="Project name" model=model onAdd=(action "addProject")}}
   </li>
 </ul>
 {{outlet}}
