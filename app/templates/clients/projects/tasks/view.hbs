@@ -2,7 +2,4 @@
 {{#each model.logEntries as |logEntry|}}
   {{render "clients.projects.tasks.log_entry" logEntry}}
 {{/each}}
-{{input placeholder="Duration" value=newLogEntryDuration}}
-{{input placeholder="Start date" value=newLogEntryDate}}
-<button {{action "addLogEntry" newLogEntryDuration newLogEntryDate model}} class="add btn btn-primary">Add</button>
 {{outlet}}

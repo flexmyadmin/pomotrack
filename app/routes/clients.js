@@ -6,9 +6,6 @@ export default Ember.Route.extend({
   },
   renderTemplate: function() {
     this.render('clients');
-    this.render('selected', {
-      outlet: 'selected',
-    });
     this.render('clock', {
       outlet: 'clock',
       controller: 'clock'

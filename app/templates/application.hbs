@@ -18,29 +18,33 @@
     </div>
 </nav>
 <div class="container">
-    <div class="row">
+    <div class="row master">
         <div class="col-sm-6">
             <div class="row">
-                <div class="com-xs-12">
-                    <form action="">
-                        <input type="text" name="filter">
+                <div class="col-xs-12">
+                    <form action="" class="form-inline">
+                        <input type="text" name="filter" placeholder="Filter">
                     </form>
                 </div>
-                <div class="com-xs-12">
-                    <ul class="nav nav-pills">
-                        <li role="presentation" class="active"><a href="#">Tree</a></li>
-                        <li role="presentation"><a href="#">List</a></li>
-                    </ul>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-default">Tree</button>
+                      <button type="button" class="btn btn-default active">List</button>
+                    </div>
                 </div>
-                <div class="com-xs-12">
+                <div class="col-xs-6">
+                    Sort by
+                    <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-default">Name</button>
+                      <button type="button" class="btn btn-default active">Date</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
                     {{outlet}}
-                </div>
-                <div class="com-xs-12">
-                   <form action="">
-                       <label for="sort_by_name">Sort by name
-                           <input type="checkbox" id="sort_by_name" name="sort_by_name">
-                       </label>
-                   </form>
                 </div>
             </div>
         </div>
@@ -51,7 +55,7 @@
                 </div>
                 <div class="col-xs-12">
                     <div class="selected">
-                      {{outlet "selected"}}
+                      {{duration-adder}}
                     </div>
 
                     <div class="clock">

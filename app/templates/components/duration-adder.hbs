@@ -1,0 +1,6 @@
+                    <h3>Running</h3>
+                    <p>{{selected.task.title}} running task</p>
+                    <div>00:00:00</div>
+{{input placeholder="Duration" value=newLogEntryDuration}}
+{{input placeholder="Start date" value=newLogEntryDate}}
+<button {{action "addLogEntry" newLogEntryDuration newLogEntryDate selected.task}} class="add btn btn-primary">Add</button>
